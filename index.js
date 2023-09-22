@@ -20,7 +20,18 @@ const userSchema = new mongoose.Schema({
     password: String
 })
 
-const User = new mongoose.model("User", userSchema)
+const User = mongoose.model("User", userSchema)
+
+const peopleSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    blood: String,
+    city: String,
+    number: Number,
+    email: String
+})
+
+const People = mongoose.model("People", peopleSchema);
 
 //Routes
 app.post("/login", (req, res)=> {
@@ -59,8 +70,55 @@ app.post("/register", (req, res)=> {
         }
     })
     
+})
+
+app.post("/details", (req, res)=> {
+    const { name, age, blood, city, number, email } = req.body
+    People.findOne({ email: email}, (err, user) => {
+        if(user){
+            res.send({message: "User already registerd"})
+        } else {
+            const user = new People({
+                name,
+                age,
+                blood,
+                city,
+                number,
+                email
+            })
+            user.save(err => {
+                if(err) {
+                    res.send(err)
+                } else {
+                    res.send( { message: "Successfully Registered" })
+                }
+            })
+        }
+    })
+}) 
+
+// app.post("/donors", (req, res)=> {
+//     const { city } = req.body
+//     People.find({ city: city}, (err, user) => {
+//         if(user){
+//             res.send(user)
+//         } else {
+//             res.send({message: "No match2"})
+//         }
+//     })
+// }) 
+
+app.post("/donors", (req, res)=> {
+    const {city , blood}  = req.body
+    People.find({ city: city, blood: blood}, (err, user) => {
+        if(user){
+            res.send({message: "Found",user})
+        } else {
+            res.send({message: "Not found"})
+        }
+    })
 }) 
 
 app.listen(8001,() => {
-    console.log("BE started at port 9000")
+    console.log("started at port 9000")
 })

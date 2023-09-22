@@ -1,17 +1,16 @@
 import React from "react"
-import { Link } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory } from "react-router-dom"
 import "./homepage.css"
 
 const Homepage = ({ setLoginUser }) => {
+    const history = useHistory()
     return (
         <div className="homepage">
-            <div className="choce1">
-                <Link to="/donate">Donate</Link>
-            </div>
-            <div className="choce2">
-                <Link to="/receive">Reaceive</Link>
-            </div>
             <div className="log_button" onClick={() => setLoginUser({})} >Logout</div><br />
+            <div className="format">
+                <div className="button1" onClick={() => history.push("/donate")}>Register as Donor</div>
+                <div className="button2" onClick={() => history.push("/receive")}>Find a Donor</div>
+            </div>
         </div>
     )
 }
