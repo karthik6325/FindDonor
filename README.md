@@ -1,7 +1,7 @@
 ## FindDonor
 
 # About
-It is a MERN web application that connects blood donors with those in need. Any user can create an account, after creation of account users can register as donors or seekers, storing theirinformation in a database. When seekers search for donors based on city and blood type, the application instantly displays a list of matching donors. Technologiesused: HTML,CSS, JavaScript,React,Express,MongoDB.
+It is a MERN web application that connects blood donors with those in need. Any user can create an account, after creation of account users can register as donors or seekers, storing theirinformation in a database. When seekers search for donors based on city and blood type, the application instantly displays a list of matching donors. Technologies used: HTML,CSS, JavaScript,React,Express,MongoDB.
 
 # Preview
 ![image](https://github.com/karthik6325/FindDonor/assets/60821631/c00322ff-a184-4d6f-8aef-59f5f6f4dc21)
